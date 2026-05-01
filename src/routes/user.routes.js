@@ -15,7 +15,7 @@ export const userRoutes = () => {
 
     router.get('/', catchError(userController.exampleGetUser));
 
-    router.post('/login', userLogin.loginUser);
+    router.post('/login', catchError(userLogin.loginUser));
 
     return router;
 };
