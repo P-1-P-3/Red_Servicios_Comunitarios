@@ -7,7 +7,7 @@ export const userRoutes = () => {
     
     const userController = new UserController();
     // /users/as
-    router.get('/', userController.createUser);
+    router.get('/', catchError(userController.exampleGetUser));
 
     return router;
 };
