@@ -10,6 +10,5 @@ export const userRoutes = () => {
     // /users/as
     router.post('/login', userLogin.loginUser);
 
-
     return router;
 };
