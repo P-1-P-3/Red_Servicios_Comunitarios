@@ -1,8 +1,7 @@
 import express from 'express';
 import { userRoutes } from './routes/user.routes.js';
-import 'dotenv/config';
-import { error404 } from './middleware/error404.js';
 import { resError } from './middleware/resError.js';
+import 'dotenv/config';
 
 const app = express();
 
