@@ -1,4 +1,4 @@
-import pkg from 'pg';
+import { Pool } from 'pg';
 
 export const pgConnection = async () => {
     const { PGUSER, PGPASSWORD, PGDATABASE, PGHOST, PGSSLMODE, PGCHANNELBINDING, PGPORT } = process.env;

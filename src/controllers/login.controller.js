@@ -1,5 +1,5 @@
 import bcrypt from 'bcrypt';
-import pool from '../config/db.js';
+import { pgConnection } from "../config/db.js";
 
 //Login
 export class UserLogin {
@@ -17,7 +17,7 @@ export class UserLogin {
             }
 
             // Buscar usuario
-            const result = await pool.query(
+            const result = await pgConnection.query(
                 'SELECT * FROM "User" WHERE "email" = $1',
                 [email]
             );

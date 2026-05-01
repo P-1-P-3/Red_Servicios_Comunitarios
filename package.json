@@ -12,11 +12,8 @@
   "license": "ISC",
   "type": "module",
   "dependencies": {
-<<<<<<< HEAD
     "dotenv": "^17.4.2",
-=======
     "bcrypt": "^6.0.0",
->>>>>>> Nicolas
     "express": "^5.2.1",
     "pg": "^8.20.0"
   }
