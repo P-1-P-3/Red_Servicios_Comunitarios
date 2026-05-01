@@ -1,18 +1,22 @@
-import pkg from 'pg';
+import { Pool } from 'pg';
 
-const { Pool } = pkg;
+export const pgConnection = async () => {
+    const { PGUSER, PGPASSWORD, PGDATABASE, PGHOST, PGSSLMODE, PGCHANNELBINDING, PGPORT } = process.env;
+    
+    const pool = new Pool({
+        user: PGUSER,
+        password: PGPASSWORD,
+        database: PGDATABASE,
+        host: PGHOST,
+        port: parseInt(PGPORT),
+        ssl: {
+            // require: PGSSLMODE === 'require',
+            rejectUnauthorized: PGSSLMODE === 'require',
+            channelBinding: PGCHANNELBINDING === 'require'
+        }
+    });
 
-const pool = new Pool({
-    user: 'postgres',          
-    host: 'localhost',         
-    database: 'PostgresIn10', 
-    password: '12345',         
-    port: 5432               
-});
+    const connection = await pool.connect();
 
-// Probar conexión
-pool.connect()
-    .then(() => console.log('Conectado a PostgreSQL'))
-    .catch(err => console.log('Error de conexión:', err));
-
-export default pool;
+    return connection;
+}
