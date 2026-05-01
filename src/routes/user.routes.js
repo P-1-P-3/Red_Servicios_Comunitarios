@@ -1,7 +1,7 @@
 import express from 'express';
 
 import { UserController } from '../controllers/user.controller.js'
-import { catchError } from '../utils/catch-error.js';
+import { catchError } from '../utils/catch-error.js'
 import { UserLogin } from '../controllers/login.controller.js';
 
 // Archivo que se encarga de definir las rutas relacionadas con los usuarios
