@@ -1,13 +1,18 @@
-import { Pool } from 'pg';
+import pkg from 'pg';
 
-export const pgConnection = () => {
-    const pool = new Pool({
-        user: '',
-        password: '',
-        database: '',
-        host: '',
-        port: 5432
-    });
+const { Pool } = pkg;
 
-    return pool;
-}
+const pool = new Pool({
+    user: 'postgres',          
+    host: 'localhost',         
+    database: 'User', 
+    password: '12345',         
+    port: 5432               
+});
+
+// Probar conexión
+pool.connect()
+    .then(() => console.log('Conectado a PostgreSQL'))
+    .catch(err => console.log('Error de conexión:', err));
+
+export default pool;

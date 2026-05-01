@@ -8,5 +8,5 @@ app.use(express.json());
 app.use('/users', userRoutes());
 
 app.listen(8080, () => {
-    console.log('Servidor escuchando en el puerto 3000');
+    console.log('Servidor escuchando en el puerto 8080');
 });
