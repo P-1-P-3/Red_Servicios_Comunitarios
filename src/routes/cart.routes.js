@@ -1,11 +1,11 @@
 import express from 'express';
 import { CartController } from '../controllers/cart.controller.js';
 
+// ✅ CORRECCIÓN: Se crea la instancia afuera para conservar el estado del carrito en memoria
+const cartController = new CartController();
+
 export const cartRoutes = () => {
     const router = express.Router();
-
-    // Herramienta para usar las funciones
-    const cartController = new CartController();
 
     /**
      * @swagger
