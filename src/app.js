@@ -1,6 +1,7 @@
 import express from 'express';
 import cors from 'cors';
 import { userRoutes } from './routes/user.routes.js';
+import { servicesRoutes } from './routes/services.routes.js';
 import { resError } from './middleware/resError.js';
 import 'dotenv/config';
 
@@ -12,15 +13,20 @@ app.use(cors({
 }));
 
 app.use(express.json());
+app.use(cors());
 
 // Rutas
 app.use('/users', userRoutes());
+app.use('/service', servicesRoutes());
 
 // Middleware errores
 app.use(resError);
 
-const PORT = process.env.PORT || 3000;
+export default app;
 
-app.listen(PORT, () => {
-    console.log(`Servidor escuchando en el puerto ${PORT}`);
-});
+if (process.env.NODE_ENV !== 'test') {
+    const PORT = process.env.PORT || 3000;
+    app.listen(PORT, () => {
+        console.log(`Servidor escuchando en el puerto ${PORT}`);
+    });
+}
