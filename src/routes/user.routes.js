@@ -1,21 +1,26 @@
 import express from 'express';
 
-import { UserController } from '../controllers/user.controller.js'
-import { catchError } from '../utils/catch-error.js'
+import { UserController } from '../controllers/user.controller.js';
+import { catchError } from '../utils/catch-error.js';
 import { UserLogin } from '../controllers/login.controller.js';
+import { RegisterController } from '../controllers/register.controller.js';
 
-// Archivo que se encarga de definir las rutas relacionadas con los usuarios
 export const userRoutes = () => {
     const router = express.Router();
 
     const userLogin = new UserLogin();
     const userController = new UserController();
-    
-    // /users/as
+    const registerController = new RegisterController();
+
+
 
     router.get('/', catchError(userController.exampleGetUser));
 
     router.post('/login', userLogin.loginUser);
+
+    router.post('/register', (req, res, next) =>
+        registerController.registerUser(req, res, next)
+    );
 
     return router;
 };
