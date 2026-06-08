@@ -8,16 +8,20 @@ import { cartRoutes } from './routes/cart.routes.js';
 
 const app = express();
 
+// 🔥 AGREGA ESTO (ANTES de las rutas)
+app.use(cors({
+    origin: 'http://localhost:5173'
+}));
+
 app.use(express.json());
 app.use(cors());
 
-// Definir las rutas aquí, por ejemplo:
+// Rutas
 app.use('/users', userRoutes());
 app.use('/cart', cartRoutes());
 app.use('/service', servicesRoutes());
 
-// ------------------------------------
-// Middleware para manejar errores
+// Middleware errores
 app.use(resError);
 
 export default app;
